@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:bd="clr-namespace:KrungsriAppAdmin.ViewModel"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="KrungsriAppAdmin.Views.AdminTransaction">
+    <!--<ContentPage.BindingContext>
+        <bd:AdminViewModel/>
+    </ContentPage.BindingContext>-->
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="180"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Source="LoginBG" Aspect="AspectFill" Grid.Row="0"/>
+            <ScrollView Grid.Row="1">
+                <StackLayout BindableLayout.ItemsSource="{Binding Trans}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="0" BackgroundColor="#FFFFFF" Margin="10" HeightRequest="100">
+                                <!--<Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command=""
+                                </Frame.GestureRecognizers>-->
+                                <Grid>                                    
+                                    <Label Text="Top up" TextColor="Black"
+                                           HorizontalOptions="Start" VerticalOptions="Start"
+                                           Grid.Row="0"/>
+                                    <Label Text="{Binding UpdateDateTime}"
+                                           HorizontalOptions="Start"
+                                           Grid.Row="1"/>
+                                    <Label Text="{Binding MoneyAmount}"
+                                           HorizontalOptions="EndAndExpand"
+                                           Grid.RowSpan="2" VerticalTextAlignment="Center"
+                                           FontSize="25"
+                                           TextColor="Black"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

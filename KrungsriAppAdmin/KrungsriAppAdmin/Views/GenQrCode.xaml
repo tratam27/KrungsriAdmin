@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:bd="clr-namespace:KrungsriAppAdmin.ViewModel"
+             xmlns:zx="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
+             x:Class="KrungsriAppAdmin.Views.GenQrCode">
+    <ContentPage.BindingContext>
+        <bd:AdminViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Grid.Row="0" VerticalOptions="EndAndExpand">
+                <zx:ZXingBarcodeImageView
+                    HeightRequest="400"
+                        BarcodeFormat="QR_CODE"
+                        BarcodeValue="{Binding QRCodeValue}"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+                    <zx:ZXingBarcodeImageView.BarcodeOptions>
+                        <zxcm:EncodingOptions Width="300" Height="300" />
+                    </zx:ZXingBarcodeImageView.BarcodeOptions>
+                </zx:ZXingBarcodeImageView>
+                <Frame CornerRadius="50" BackgroundColor="White" Padding="0" Margin="0,10"
+                       HeightRequest="70" WidthRequest="70" HorizontalOptions="Center">
+                    <Image Source="AccountOrange" Aspect="AspectFit" VerticalOptions="Center"
+                           HeightRequest="40" WidthRequest="40" HorizontalOptions="Center"/>
+                </Frame>
+                <Label Text="{Binding Name}" TextColor="Black" FontSize="20" VerticalOptions="StartAndExpand"
+                   HorizontalOptions="CenterAndExpand"/>
+                <Frame BackgroundColor="#EAA200" CornerRadius="30" Margin="170,0" Padding="0" HorizontalOptions="FillAndExpand"
+                       >
+                    <Label Text="Top up" TextColor="White" HorizontalOptions="Center"/>
+                </Frame>
+                <Label Text="{Binding MoneyAmount,StringFormat='{0} THB'}" TextColor="Black"
+                       FontSize="40" HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding Reference,StringFormat='Ref : {0}'}" HorizontalOptions="Center"
+                       FontSize="15"/>
+                <Label Text="{Binding ExpiryDate,StringFormat='Expired : {0}'}"
+                       HorizontalOptions="Center" FontSize="15"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1" VerticalOptions="End">
+                <Frame Padding="0" Margin="15" HasShadow="True" CornerRadius="5">
+                    <Button Text="กลับสู่หน้าหลัก" BackgroundColor="#EAA200" HorizontalOptions="FillAndExpand"
+                            TextColor="#FFFFFF" FontSize="20" FontAttributes="Bold" Command="{Binding BackToHome}"/>
+                </Frame>                
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

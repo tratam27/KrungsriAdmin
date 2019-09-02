@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:bd="clr-namespace:KrungsriAppAdmin.ViewModel"
+             x:Class="KrungsriAppAdmin.Views.InputMoney">
+    <ContentPage.BindingContext>
+        <bd:AdminViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Image Source="Back" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="50" Margin="20"/>
+                <Label Text="เติมเงิน" HorizontalOptions="Center" TextColor="Black" FontSize="20" Margin="0,15" FontAttributes="Bold"/>
+            </Grid>
+            <Image Source="qricon" HorizontalOptions="CenterAndExpand" HeightRequest="200" WidthRequest="200"/>
+            <Label Text="ใส่จำนวนเงิน" FontSize="25" HorizontalOptions="Center"/>
+            <Entry Placeholder="0.00" HorizontalTextAlignment="Center" FontSize="40" Text="{Binding MoneyAmount}"/>
+            <Button VerticalOptions="EndAndExpand" BackgroundColor="#EAA200" TextColor="White" FontSize="20"
+                    Text="ตกลง" FontAttributes="Bold" Margin="15" Command="{Binding PushToCreateQRCode}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
